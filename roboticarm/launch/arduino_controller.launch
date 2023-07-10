@@ -1,0 +1,12 @@
+<launch>
+
+    <arg name="port" default="/dev/ttyACM0"/>
+
+    <node name="arduino_serial" pkg="rosserial_python" type="serial_node.py" output="screen">
+        <param name="port" value="$(arg port)"/>
+        <param name="baud" value="57600"/>
+    </node>
+
+    <node name="arduino_interface" pkg="roboticarm" type="arm_controller_w_arduino.py" />
+
+</launch>
